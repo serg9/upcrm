@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 .idea/*.xml
 .idea/inspectionProfiles/*.xml
+*__.py
+.vscode/settings.json
