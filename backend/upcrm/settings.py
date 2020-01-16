@@ -11,6 +11,7 @@ class Base(Configuration):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     SECRET_KEY = '4h=d=ogwp5^dts-nqk+z)z*f8#x84_su!m(_z_d*)5df1y9sl$'
     DEBUG = False
+    ROOT_URLCONF = 'upcrm.urls'
     ALLOWED_HOSTS = [
         "*"
     ]
@@ -23,6 +24,10 @@ class Base(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'rest_framework',
+        'drf_yasg',
+
+        'users',
+        'utils'
     ]
 
     MIDDLEWARE = [
@@ -84,8 +89,9 @@ class Base(Configuration):
 
     REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework_simplejwt.authentication.JWTAuthentication',
-        )
+            # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        ),
+        'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
     }
     SIMPLE_JWT = {
         'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
